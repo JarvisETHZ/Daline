@@ -67,7 +67,7 @@ To execute some basic commands in Daline:
   model = daline.all('case118', 'method.name', 'RR_VCS', 'PLOT.style', 'light');
   ```
 
-For more detailed usage instructions and additional examples, refer to the Daline User Manual in `Daline115/doc/`.
+For more detailed usage instructions and additional examples, refer to the Daline User Manual in the `doc` folder.
 
 ## Terms of Use
 
