@@ -1,4 +1,6 @@
-# Daline - A Data-driven Power Flow Linearization Toolbox
+![dalinelogo](dalinelogo.png)
+
+# Daline: A Data-driven Power Flow Linearization Toolbox
 
 **Official Website:** https://www.shuo.science/daline
 
