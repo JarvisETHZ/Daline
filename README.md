@@ -37,17 +37,13 @@ To execute some basic commands in Daline:
 
 - **Data Generation**:
 
-  ```
-  matlab
-  Copy code
+  ```matlab
   data = daline.data('case.name', 'case14');
   ```
 
 - **Fit Model**:
 
-  ```
-  matlab
-  Copy code
+  ```matlab
   model = daline.fit(data, 'method.name', 'PLS_SIM');
   ```
 
