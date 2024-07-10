@@ -1,0 +1,12 @@
+
+Copyright (c) 2024, Mengshuo Jia and Gabriela Hug.
+ 
+Primary Developers:
+- Mengshuo Jia
+- Wen Yi Chan
+- Gabriela Hug
+ 
+Other Contributors:
+- Francisco Escobar Prado
+- Quentin Lété
+- Kaiser Katharina
