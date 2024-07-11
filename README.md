@@ -16,15 +16,31 @@
 
 *Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.*
 
-## A glance
-
-Utilize or compare over 55 linearization methods using one line of code in **Daline**
-
-![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/daline-fig1-distribution.png)
-
 ## Introduction
 
 Daline is a MATLAB toolbox for data-driven power flow linearization in power systems research and education. Unlike traditional model-driven approaches, Daline uses system measurements to train linear models, accommodating realistic impacts like control actions and variable system parameters. It includes over 55 linearization methods and is designed to help users perform complex simulation and comparison tasks using just a few simple commands.
+
+## A glance
+
+**Generate, pollute, clean, and normalize (optimal) power flow data with numerous customization in one Daline command**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/data_generation_github.png)
+
+**Utilize or compare over 55 linearization methods using one line of code in Daline**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/distribution_github.png)
+
+**Get accuracy ranking for any states of any methods by a simple Daline command**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/rank_Vm_github.png)
+
+**One simple command in Daline can tell you which method is faster**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/time_github.png)
+
+**Or, one simple command in Daline can tell you which method is more scalable**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/scale_github.png)
 
 ## Getting Started
 
@@ -81,7 +97,7 @@ For more detailed usage instructions and additional examples, refer to the Dalin
 - No warranty is provided.
 - Refer to the LICENSE file for detailed conditions.
 
-### Citing Daline
+## Citing Daline
 
 Citing Daline in publications is requested by the authors:
 
