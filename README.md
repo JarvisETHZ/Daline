@@ -16,6 +16,12 @@
 
 *Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.*
 
+## A glance
+
+Utilize or compare over 55 linearization methods using one line of code in **Daline**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/daline-fig1-distribution.png)
+
 ## Introduction
 
 Daline is a MATLAB toolbox for data-driven power flow linearization in power systems research and education. Unlike traditional model-driven approaches, Daline uses system measurements to train linear models, accommodating realistic impacts like control actions and variable system parameters. It includes over 55 linearization methods and is designed to help users perform complex simulation and comparison tasks using just a few simple commands.
