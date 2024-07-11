@@ -99,7 +99,7 @@ For more detailed usage instructions and additional examples, refer to the Dalin
 
 ## Citing Daline
 
-Citing Daline in publications is requested by the authors:
+Please cite Daline via the following reference when it is used in your work. 
 
 ```latex
 @article{Daline,
