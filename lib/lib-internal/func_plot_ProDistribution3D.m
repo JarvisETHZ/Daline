@@ -68,7 +68,7 @@ function failedMethods = func_plot_ProDistribution3D(models, opt)
         if ~isempty(failedMethods{fieldIdx, 1})
             failedMethods{fieldIdx, 2} = ['Method(s) that failed when predicting ', field];
         end
-
+            
         % Update the number of valid models
         numValidModels = numel(validModels);
 
@@ -109,84 +109,87 @@ function failedMethods = func_plot_ProDistribution3D(models, opt)
         % Number of components for GMM
         numComponent = opt.PLOT.numComponent;
 
-        % Loop through each ranked model
-        for i = 1:numValidModels
-            % Get the ranked index
-            rankedIndex = rankedIndices(i);
+        if opt.PLOT.switch
+            % Loop through each ranked model
+            for i = 1:numValidModels
+                % Get the ranked index
+                rankedIndex = rankedIndices(i);
 
-            % Extract error data for the current model
-            errorData = validModels{rankedIndex}.error;
+                % Extract error data for the current model
+                errorData = validModels{rankedIndex}.error;
 
-            % Flatten the 'all' field data and handle zeros by adding epsilon
-            allErrors = errorData.(field)(:) + epsilon;
+                % Flatten the 'all' field data and handle zeros by adding epsilon
+                allErrors = errorData.(field)(:) + epsilon;
 
-            % Fit a normal distribution to the data
-            pd = fitgmdist(log(allErrors), numComponent);
+                % Fit a normal distribution to the data
+                pd = fitgmdist(log(allErrors), numComponent);
 
-            % Define the x range for the log-transformed error values
-            x = linspace(min(log(allErrors)), max(log(allErrors)), numPoints);
+                % Define the x range for the log-transformed error values
+                x = linspace(min(log(allErrors)), max(log(allErrors)), numPoints);
 
-            % Get the probability density values from the normal distribution
-            z = pdf(pd, x');
+                % Get the probability density values from the normal distribution
+                z = pdf(pd, x');
 
-            % Normalize the probability density values if the variance
-            % among z values of different models is too large and the
-            % distributions are invisible on the same figure
-            if opt.PLOT.norm
-                z = z / max(z);
+                % Normalize the probability density values if the variance
+                % among z values of different models is too large and the
+                % distributions are invisible on the same figure
+                if opt.PLOT.norm
+                    z = z / max(z);
+                end
+
+                % Model index for separation in the y-axis
+                y = i * ones(size(x));
+
+                % Transform x back to the original scale
+                x = exp(x);
+
+                % Create the polygon vertices for fill3
+                x_poly = [x, fliplr(x)];
+                y_poly = [y, y];
+                z_poly = [zeros(size(z')), fliplr(z')];  % Baseline to the probability density
+
+                % Plot the 3D area plot
+                fill3(x_poly, y_poly, z_poly, colors(i, :), 'FaceAlpha', alphas(i), 'EdgeColor', 'none');
+                hold on;
+
+                % Add a line on the x-y plane for each distribution connecting to the y-axis
+                plot3([1e4, min(x)], [i, i], [0, 0], 'Color', colors(i, :), 'LineWidth', 0.3);
             end
 
-            % Model index for separation in the y-axis
-            y = i * ones(size(x));
+            % Set the x-axis to log scale
+            set(gca, 'XScale', 'log');
 
-            % Transform x back to the original scale
-            x = exp(x);
+            % Set the axis labels and title
+            xlabelHandle = xlabel(['Relative Error of ', field], 'FontName', 'Times New Roman', 'FontSize', 18, 'Interpreter', 'none', 'Color', textColor);
+            ylabelHandle = ylabel('Method', 'FontName', 'Times New Roman', 'FontSize', 18, 'Interpreter', 'none', 'Color', textColor);
+            if opt.PLOT.norm
+                zlabelHandle = zlabel('Normalized Probability Distribution', 'FontName', 'Times New Roman', 'FontSize', 18, 'Interpreter', 'none', 'Color', textColor);
+            else
+                zlabelHandle = zlabel('Probability Distribution', 'FontName', 'Times New Roman', 'FontSize', 18, 'Interpreter', 'none', 'Color', textColor);
+            end
 
-            % Create the polygon vertices for fill3
-            x_poly = [x, fliplr(x)];
-            y_poly = [y, y];
-            z_poly = [zeros(size(z')), fliplr(z')];  % Baseline to the probability density
 
-            % Plot the 3D area plot
-            fill3(x_poly, y_poly, z_poly, colors(i, :), 'FaceAlpha', alphas(i), 'EdgeColor', 'none');
-            hold on;
+            % Adjust the position of the x-axis label
+            set(xlabelHandle, 'Position', get(xlabelHandle, 'Position') - [0, 0.2, 0]); % Modify the y-distance
 
-            % Add a line on the x-y plane for each distribution connecting to the y-axis
-            plot3([1e4, min(x)], [i, i], [0, 0], 'Color', colors(i, :), 'LineWidth', 0.3);
-        end
+            % Turn off the grid
+            grid off;
 
-        % Set the x-axis to log scale
-        set(gca, 'XScale', 'log');
+            % Customize the y-ticks to show the ranked method names
+            set(gca, 'YTick', 1:numValidModels, 'YTickLabel', rankedAlgorithmNames, 'FontName', 'Times New Roman', 'FontSize', 18, 'Color', textColor);
 
-        % Set the axis labels and title
-        xlabelHandle = xlabel(['Relative Error of ', field], 'FontName', 'Times New Roman', 'FontSize', 18, 'Interpreter', 'none', 'Color', textColor);
-        ylabelHandle = ylabel('Method', 'FontName', 'Times New Roman', 'FontSize', 18, 'Interpreter', 'none', 'Color', textColor);
-        if opt.PLOT.norm
-            zlabelHandle = zlabel('Normalized Probability Distribution', 'FontName', 'Times New Roman', 'FontSize', 18, 'Interpreter', 'none', 'Color', textColor);
-        else
-            zlabelHandle = zlabel('Probability Distribution', 'FontName', 'Times New Roman', 'FontSize', 18, 'Interpreter', 'none', 'Color', textColor);
-        end
+            % Set the axes background color based on the style
+            set(gca, 'Color', bgColor); 
+
+            % Set the axis color based on the style
+            set(gca, 'XColor', textColor, 'YColor', textColor, 'ZColor', textColor);
+
+            % Turn off the legend
+            legend off;
+
+            % Set the view angle for better visualization
+            view(-30, 30);
         
-        
-        % Adjust the position of the x-axis label
-        set(xlabelHandle, 'Position', get(xlabelHandle, 'Position') - [0, 0.2, 0]); % Modify the y-distance
-
-        % Turn off the grid
-        grid off;
-
-        % Customize the y-ticks to show the ranked method names
-        set(gca, 'YTick', 1:numValidModels, 'YTickLabel', rankedAlgorithmNames, 'FontName', 'Times New Roman', 'FontSize', 18, 'Color', textColor);
-
-        % Set the axes background color based on the style
-        set(gca, 'Color', bgColor); 
-
-        % Set the axis color based on the style
-        set(gca, 'XColor', textColor, 'YColor', textColor, 'ZColor', textColor);
-
-        % Turn off the legend
-        legend off;
-
-        % Set the view angle for better visualization
-        view(-30, 30);
+        end
     end
 end

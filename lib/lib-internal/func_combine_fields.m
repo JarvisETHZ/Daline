@@ -23,6 +23,11 @@ for i = 1:length(fieldNames)
     % Get the matrix associated with the current field name
     currentMatrix = X.(fieldNames{i});
     Idx.(fieldNames{i}) = fullIdx.(fieldNames{i});
+    
+    % Check if the currentMatrix is empty
+    if isempty(currentMatrix)
+        error('Field %s in the training/testing dataset is empty; this may be attributed to the filter approach used, which removed all the samples (change filter approaches or re-check your data is recommended)', fieldNames{i});
+    end
 
     % Check if the matrix is non-empty and has the same number of rows as the result matrix
     if i > 1 && (isempty(currentMatrix) || size(currentMatrix, 1) ~= size(result, 1))

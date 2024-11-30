@@ -40,7 +40,8 @@ end
 pList = ['1', opt.variable.predictor, X_lift];
 rList = opt.variable.response;
 
-% get numbers for later error separations
+% get numbers for later error separations; It may contain empty field => no
+% problem
 numY.Vm = size(Y.test.Vm, 2);
 numY.Vm2= size(Y.test.Vm2,2);
 numY.Va = size(Y.test.Va, 2);

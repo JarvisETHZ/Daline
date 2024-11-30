@@ -1,4 +1,6 @@
-# Daline - A Data-driven Power Flow Linearization Toolbox
+![dalinelogo](dalinelogo.png)
+
+# Daline: A Data-driven Power Flow Linearization Toolbox
 
 **Official Website:** https://www.shuo.science/daline
 
@@ -18,6 +20,28 @@
 
 Daline is a MATLAB toolbox for data-driven power flow linearization in power systems research and education. Unlike traditional model-driven approaches, Daline uses system measurements to train linear models, accommodating realistic impacts like control actions and variable system parameters. It includes over 55 linearization methods and is designed to help users perform complex simulation and comparison tasks using just a few simple commands.
 
+## A glance
+
+**Generate, pollute, clean, and normalize (optimal) power flow data with numerous customization in one Daline command**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/data_generation_github.png)
+
+**Utilize or compare over 55 linearization methods using one line of code in Daline**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/distribution_github.png)
+
+**Get accuracy ranking for any states of any methods by a simple Daline command**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/rank_Vm_github.png)
+
+**One simple command in Daline can tell you which method is faster**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/time_github.png)
+
+**Or, one simple command in Daline can tell you which method is more scalable**
+
+![distribution](https://github.com/JarvisETHZ/JarvisETHZ.github.io/blob/master/assets/images/scale_github.png)
+
 ## Getting Started
 
 ### System Requirements
@@ -27,9 +51,9 @@ Daline is a MATLAB toolbox for data-driven power flow linearization in power sys
 
 ### Installation
 
-1. **Download** the Daline115.zip file from the [official website](https://www.shuo.science/daline) or [GitHub](https://github.com/JarvisETHZ/Daline).
-2. **Unzip** and move the folder to a desired location.
-3. **Set Up**: In MATLAB, set the current folder to the Daline115 directory and run `daline_setup`.
+1. Download the Daline115.zip file from the [official website](https://www.shuo.science/daline) or [GitHub](https://github.com/JarvisETHZ/Daline).
+2. Unzip and move the folder to a desired location.
+3. Set the current folder to the Daline115 directory and run `daline_setup` using MATLAB
 
 ## Running Daline
 
@@ -37,17 +61,13 @@ To execute some basic commands in Daline:
 
 - **Data Generation**:
 
-  ```
-  matlab
-  Copy code
+  ```matlab
   data = daline.data('case.name', 'case14');
   ```
 
 - **Fit Model**:
 
-  ```
-  matlab
-  Copy code
+  ```matlab
   model = daline.fit(data, 'method.name', 'PLS_SIM');
   ```
 
@@ -69,7 +89,7 @@ To execute some basic commands in Daline:
   model = daline.all('case118', 'method.name', 'RR_VCS', 'PLOT.style', 'light');
   ```
 
-For more detailed usage instructions and additional examples, refer to the Daline User Manual in `Daline115/doc/`.
+For more detailed usage instructions and additional examples, refer to the Daline User Manual in the `doc` folder.
 
 ## Terms of Use
 
@@ -77,9 +97,9 @@ For more detailed usage instructions and additional examples, refer to the Dalin
 - No warranty is provided.
 - Refer to the LICENSE file for detailed conditions.
 
-### Citing Daline
+## Citing Daline
 
-Citing Daline in publications is requested by the authors:
+Please cite Daline via the following reference when it is used in your work. 
 
 ```latex
 @article{Daline,

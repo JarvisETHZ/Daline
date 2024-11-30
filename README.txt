@@ -1,10 +1,10 @@
 ========================================================
 Daline - A Data-driven Power Flow Linearization Toolbox
 ========================================================
-Version: 1.1.5
+Version: 1.1.6
 Authors: Mengshuo Jia, Wen Yi Chan, Gabriela Hug
 Power Systems Lab, ETH Zurich
-April 18, 2024
+November 30, 2024
 Copyright (c) 2024, Mengshuo Jia and Gabriela Hug
 Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.
 
@@ -24,6 +24,7 @@ TERMS OF USE
   @ARTICLE{Daline,
     author={Jia, Mengshuo and Chan, Wen Yi and Hug, Gabriela},
     title={Daline: A Data-driven Power Flow Linearization Toolbox for Power Systems Research and Education},
+    url={https://doi.org/10.3929/ethz-b-000681867},
     year={2024}}
 
 ———————————————  

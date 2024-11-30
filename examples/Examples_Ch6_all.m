@@ -19,8 +19,8 @@ model = daline.all('case118', 'noise.switchTrain', 1, 'noise.SNR_dB', 30);
 model = daline.all('case118', 'noise.switchTest', 1, 'noise.SNR_dB', 30);
 
 % Test filtering outliers
-model = daline.all('case118', 'outlier.switchTrain', 1, 'outlier.percentage', 0.01, 'filOut.switchTrain', 1);
-model = daline.all('case118', 'outlier.switchTest', 1, 'outlier.percentage', 0.01, 'filOut.switchTest', 1, 'filOut.method', 'median');
+model = daline.all('case118', 'outlier.switchTrain', 1, 'outlier.percentage', 0.001, 'filOut.switchTrain', 1);
+model = daline.all('case118', 'outlier.switchTest', 1, 'outlier.percentage', 0.001, 'filOut.switchTest', 1, 'filOut.method', 'median');
 
 % Test filtering noise
 model = daline.all('case118', 'noise.switchTrain', 1, 'noise.SNR_dB', 30, 'filNoi.switchTrain', 1);
