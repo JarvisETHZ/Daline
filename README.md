@@ -4,13 +4,13 @@
 
 **Official Website:** https://www.shuo.science/daline
 
-**Version:** 1.1.5
+**Version:** 1.1.6
 
 **Authors:** [Mengshuo Jia](https://www.shuo.science), Wen Yi Chan, [Gabriela Hug](https://psl.ee.ethz.ch/people/prof--gabriela-hug.html)
 
 **Affiliation:** Power Systems Lab, ETH Zurich
 
-**Date:** June 27, 2024
+**Date:** November 30, 2024
 
 **Copyright:** © 2024, Mengshuo Jia and Gabriela Hug
 
@@ -51,7 +51,7 @@ Daline is a MATLAB toolbox for data-driven power flow linearization in power sys
 
 ### Installation
 
-1. Download the Daline115.zip file from the [official website](https://www.shuo.science/daline) or [GitHub](https://github.com/JarvisETHZ/Daline).
+1. Download the Daline116.zip file from the [official website](https://www.shuo.science/daline) or [GitHub](https://github.com/JarvisETHZ/Daline).
 2. Unzip and move the folder to a desired location.
 3. Set the current folder to the Daline115 directory and run `daline_setup` using MATLAB
 
