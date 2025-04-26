@@ -9,13 +9,16 @@ key = {'system', 'generate data', 'add outlier', 'add noise', 'filter outlier', 
        'LS_LIF', 'PLS_NIP', 'PLS_BDL','PLS_BDLY2', 'PLS_BDLopen', 'PLS_REC', 'PLS_REP', 'PLS_RECW', ...
        'PLS_CLS', 'RR', 'RR_WEI', 'RR_KPC', 'RR_VCS', 'SVR', 'SVR_POL', 'SVR_RR', 'SVR_CCP', 'LCP_BOX', ...
        'LCP_BOXN', 'LCP_JGD', 'LCP_JGDN', 'LCP_COU', 'LCP_COUN', 'LCP_COU2', 'LCP_COUN2', 'DRC_XM', ...
-       'DRC_XYM', 'DRC_XYD', 'DC', 'DC_LS', 'DLPF', 'DLPF_C', 'PTDF', 'TAY', 'PLOT'};
+       'DRC_XYM', 'DRC_XYD', 'DC', 'DC_LS', 'DLPF', 'DLPF_C', 'PTDF', 'TAY', 'OI', 'PLOT'};
 
-% Get the name list of the toolbox
+% Get the name list of the toolbox; here case39 is used as a default case.
+% This is fine, as the goal here is to check the names of user-specified
+% options, not the values.
 opt_benchmark = func_default_option_category(key);
 
 % Add the name of the only implicit option, case.mpc, to opt_benchmark.
 opt_benchmark.case.mpc = [];
+opt_benchmark.mpc.bus_name = []; % Some MATPOWER cases contains bus_name => adding this empty filed can avoid warning of unrecognized filed;
 
 % Check the names
 func_check_structFields(opt_benchmark, opt_user);

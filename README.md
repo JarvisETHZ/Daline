@@ -4,21 +4,21 @@
 
 **Official Website:** https://www.shuo.science/daline
 
-**Version:** 1.1.6
+**Version:** 1.1.7
 
 **Authors:** [Mengshuo Jia](https://www.shuo.science), Wen Yi Chan, [Gabriela Hug](https://psl.ee.ethz.ch/people/prof--gabriela-hug.html)
 
 **Affiliation:** Power Systems Lab, ETH Zurich
 
-**Date:** November 30, 2024
+**Date:** April 25, 2025
 
-**Copyright:** © 2024, Mengshuo Jia and Gabriela Hug
+**Copyright:** © 2025, Mengshuo Jia and Gabriela Hug
 
 *Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.*
 
 ## Introduction
 
-Daline is a MATLAB toolbox for data-driven power flow linearization in power systems research and education. Unlike traditional model-driven approaches, Daline uses system measurements to train linear models, accommodating realistic impacts like control actions and variable system parameters. It includes over 55 linearization methods and is designed to help users perform complex simulation and comparison tasks using just a few simple commands.
+Daline is a MATLAB toolbox for generalized data-driven power flow linearization in power systems research and education. Unlike traditional model-driven approaches, Daline uses system measurements to train linear models, accommodating realistic impacts like control actions and variable system parameters. It includes over 58 linearization methods and is designed to help users perform complex simulation and comparison tasks using just a few simple commands.
 
 ## A glance
 

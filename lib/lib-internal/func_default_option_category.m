@@ -7,7 +7,7 @@ function opt = func_default_option_category(key)
 % default parameters for training methods.
 
 % Illustrate all the training methods supported now
-methodList = ["LS"; "QR"; "LD"; "LS_PIN"; "PIN"; "LS_SVD"; "SVD"; "LS_COD"; "COD"; "LS_PCA"; "PCA"; "LS_HBW"; "LS_HBLD"; "LS_HBLE"; "LS_GEN"; "LS_LIFX"; "LS_LIFXi"; "LS_TOL"; "LS_CLS"; "LS_WEI"; "LS_REC"; "LS_REP"; "PLS_SIM"; "PLS_SIMRX"; "PLS_NIP"; "PLS_BDL"; "PLS_BDLY2"; "PLS_BDLopen"; "PLS_REC"; "PLS_RECW"; "PLS_REP"; "PLS_CLS"; "RR"; "RR_WEI"; "RR_KPC"; "RR_VCS"; "SVR"; "SVR_POL"; "SVR_CCP"; "SVR_RR"; "LCP_BOXN"; "LCP_BOX"; "LCP_JGDN"; "LCP_JGD"; "LCP_COUN"; "LCP_COUN2"; "LCP_COU"; "LCP_COU2"; "DRC_XM"; "DRC_XYM"; "DRC_XYD"; "DC"; "DC_LS"; "DLPF"; "DLPF_C"; "PTDF"; "TAY"];
+methodList = ["LS"; "QR"; "LD"; "LS_PIN"; "PIN"; "LS_SVD"; "SVD"; "LS_COD"; "COD"; "LS_PCA"; "PCA"; "LS_HBW"; "LS_HBLD"; "LS_HBLE"; "LS_GEN"; "LS_LIFX"; "LS_LIFXi"; "LS_TOL"; "LS_CLS"; "LS_WEI"; "LS_REC"; "LS_REP"; "PLS_SIM"; "PLS_SIMRX"; "PLS_NIP"; "PLS_BDL"; "PLS_BDLY2"; "PLS_BDLopen"; "PLS_REC"; "PLS_RECW"; "PLS_REP"; "PLS_CLS"; "RR"; "RR_WEI"; "RR_KPC"; "RR_VCS"; "SVR"; "SVR_POL"; "SVR_CCP"; "SVR_RR"; "LCP_BOXN"; "LCP_BOX"; "LCP_JGDN"; "LCP_JGD"; "LCP_COUN"; "LCP_COUN2"; "LCP_COU"; "LCP_COU2"; "DRC_XM"; "DRC_XYM"; "DRC_XYD"; "DC"; "DC_LS"; "DLPF"; "DLPF_C"; "PTDF"; "TAY"; "OI"];
 methodNoIndiviOpt = ["LS"; "QR"; "LD"; "LS_PIN"; "PIN"; "LS_SVD"; "SVD"; "LS_COD"; "COD"; "LS_TOL"; "PLS_SIM"; "PLS_SIMRX"];
 
 % Check for methodList element presence in key
@@ -45,7 +45,6 @@ for n = 1:length(key)
             % System case default options
             opt.case.name = 'case39';  % Case name, from the built-in cases in matpower
             opt.mpc = ext2int(loadcase(opt.case.name)); % Get mpc from the case name
-            opt.mpc.bus_name = [];     % Some MATPOWER cases contains bus_name => adding this empty filed by default to avoid warning of unrecognized filed
             % opt.case.mpc = [];       % Implicit option, accepting external mpc models. User can directly use this option via name-value pairs or opt struct, without needing to make this line active. Please keep this implicit option commented out. 
         case 'generate data'
             % Data generation related default options
@@ -458,6 +457,14 @@ for n = 1:length(key)
             opt.TAY.point0          = 'end';           % Index of the operating point in the training datasets; should be less than opt.num.trainSample; if 'end', will use the last sample in the training dataset
             opt.variable.predictor  = 'Fixed: P, Q'; % Fixed predictors because of the method
             opt.variable.response   = 'Fixed: Vm, Va'; % Fixed responses because of the method
+        case 'OI'
+            % Outlier-Immune method based on the continuous relaxation-rounding algorithm
+            opt.OI.bigM             = 1e6;  % Big-M constant: a large number to relax the constraint when a sample is flagged as an outlier.           
+            opt.OI.outlierRatio     = 0.08; % Outlier Ratio: the allowed fraction of outliers. For example, 0.1 means that up to 10% of the data can be marked as outliers.      
+            opt.OI.theta            = 0.9;  % Rounding Threshold: the threshold at which the relaxed binary variable z is fixed to 1. For instance, 0.9 means that any sample with z>=0.9 in the relaxed solution is fixed as an outlier.         
+            opt.OI.maxIter          = 100;  % Maximum Iterations: limits the number of iterations for the continuous relaxation-rounding process.       
+            opt.OI.solver           = 'gurobi'; % Solver Option: the name of the solver to be used (e.g., 'gurobi', 'mosek', or 'sdpt3').  
+            opt.OI.verbose          = 1;    % Verbose Option: controls the amount of output produced by the solver. A value of 0 means quiet, 1 means minimal output, and higher values can yield more details.
         case 'PLOT'
             % Choose which responses to show in the figure
             opt.PLOT.switch       = 1;             % 1: plot the result; 0: don't plot the result

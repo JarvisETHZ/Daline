@@ -486,3 +486,11 @@ model = daline.fit(data, opt);
 model = func_algorithm_PCA(data, 'variable.predictor', {'P'}, 'variable.response', {'PF', 'Vm'}, 'PCA.PerComponent', [30:10:90], 'PCA.numFold', 5);
 opt = daline.setopt('variable.predictor', {'P'}, 'variable.response', {'PF', 'Vm'}, 'PCA.PerComponent', [30:10:90], 'PCA.numFold', 5);
 model = func_algorithm_PCA(data, opt);
+
+%% 4.10 Mixed integer programming
+data = daline.data('case.name', 'case39', 'voltage.varyIndicator', 0, 'load.upperRangeTime', 1.2, 'load.lowerRangeTime', 0.8, 'data.parallel', 0);
+data = daline.normalize(data);
+model = daline.fit(data, 'method.name', 'OI', 'variable.predictor', {'P', 'Q'}, 'variable.response', {'Vm', 'PF'});
+model = daline.fit(data, 'method.name', 'OI', 'variable.predictor', {'P', 'Q'}, 'variable.response', {'PF'}, 'OI.outlierRatio', 0.1, 'OI.theta', 0.9);
+opt = daline.setopt('method.name', 'OI', 'variable.predictor', {'P', 'Q'}, 'variable.response', {'PF'}, 'OI.outlierRatio', 0.1, 'OI.theta', 0.9);
+model = daline.fit(data, opt);

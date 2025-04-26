@@ -175,6 +175,9 @@ switch opt.method.name
     case 'TAY'
         % 1st order Taylor approximation
         result = func_algorithm_TAY(data, opt);  
+    case 'OI'
+        % Outlier-Immune method based on the continuous relaxation-rounding algorithm
+        result = func_algorithm_OI(data, opt);  
     otherwise
         error(['Method "', opt.method.name, '" is not supported by the toolbox. This may be a typo. Please also ensure there are no spaces in the method name. If this is not a typo, please check the manual for the list of supported methods.']);
 end

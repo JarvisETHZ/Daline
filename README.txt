@@ -1,17 +1,17 @@
 ========================================================
 Daline - A Data-driven Power Flow Linearization Toolbox
 ========================================================
-Version: 1.1.6
+Version: 1.1.7
 Authors: Mengshuo Jia, Wen Yi Chan, Gabriela Hug
 Power Systems Lab, ETH Zurich
-November 30, 2024
-Copyright (c) 2024, Mengshuo Jia and Gabriela Hug
+April 25, 2025
+Copyright (c) 2025, Mengshuo Jia and Gabriela Hug
 Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.
 
 ————————————
 INTRODUCTION
 ————————————
-Daline is a MATLAB(R) toolbox for data-driven power flow linearization in power systems research and education. Unlike traditional model-driven approaches, Daline uses system measurements to train linear models, accommodating realistic impacts like control actions and variable system parameters. It includes over 55 linearization methods and is designed to help users perform complex simulation and comparison tasks using just a few simple commands.
+Daline is a MATLAB(R) toolbox for generalized data-driven power flow linearization in power systems research and education. Unlike traditional model-driven approaches, Daline uses system measurements to train linear models, accommodating realistic impacts like control actions and variable system parameters. It includes over 55 linearization methods and is designed to help users perform complex simulation and comparison tasks using just a few simple commands.
 
 ———————————— 
 TERMS OF USE
@@ -35,9 +35,9 @@ System Requirements:
 • Suggest but not mandatory: MATLAB version 2020b or later.
 
 Installation:
-Step 1. Download the Daline112.zip file from the website or GitHub.
+Step 1. Download the Daline117.zip file from the website or GitHub.
 Step 2. Unzip and move the folder to a desired location.
-Step 3. In MATLAB, set the current folder to the Daline112 directory and run daline_setup.
+Step 3. In MATLAB, set the current folder to the Daline117 directory and run daline_setup.
 
 —————————————— 
 RUNNING DALINE
@@ -49,4 +49,4 @@ To run some simple commands of Daline:
 • Rank Time:         time   = daline.time(data, {'QR', 'PLS_SIMRX', 'LS_COD'});
 • Complete Workflow: model  = daline.all('case118', 'method.name', 'RR_VCS', 'PLOT.style', 'light');
 
-For many other additional commands, refer to the User's Manual in Daline112/doc/ for more detailed usage instructions and additional examples .
+For many other additional commands, refer to the User's Manual in Daline117/doc/ for more detailed usage instructions and additional examples .
